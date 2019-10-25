@@ -13213,8 +13213,130 @@ conveniently distributed as a compressed file and can be downloaded from <a href
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Step-7.-Test-pyspark-connection-to-Spark">Step 7. Test pyspark connection to Spark<a class="anchor-link" href="#Step-7.-Test-pyspark-connection-to-Spark">&#182;</a></h2><p>Last we would like to test our Spark setup is working. For that I created the following Jupyter Notebook which you can download and run in your own Jupyter Notebook environment.</p>
-<p><a href="ConnectingToSparkInJupyter.ipynb">Connecting to Spark in Jupyter</a></p>
 
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">findspark</span>
+<span class="n">findspark</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="s1">&#39;D:\spark\spark-2.4.4-bin-hadoop2.7&#39;</span><span class="p">)</span> <span class="c1">## *** SET THIS ACCORDING TO YOUR SPARK HOME DIRECTORY ** ##</span>
+
+<span class="kn">import</span> <span class="nn">pyspark</span>
+<span class="kn">from</span> <span class="nn">pyspark</span> <span class="k">import</span> <span class="n">SparkConf</span>
+<span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="k">import</span> <span class="n">SparkSession</span>
+
+<span class="n">session</span> <span class="o">=</span> <span class="n">SparkSession</span><span class="o">.</span><span class="n">builder</span><span class="o">.</span><span class="n">appName</span><span class="p">(</span><span class="s2">&quot;Local Spark Context&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getOrCreate</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">session</span><span class="o">.</span><span class="n">sparkContext</span><span class="o">.</span><span class="n">getConf</span><span class="p">()</span><span class="o">.</span><span class="n">getAll</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[3]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[(&#39;spark.app.id&#39;, &#39;local-1572000944878&#39;),
+ (&#39;spark.rdd.compress&#39;, &#39;True&#39;),
+ (&#39;spark.driver.port&#39;, &#39;52958&#39;),
+ (&#39;spark.serializer.objectStreamReset&#39;, &#39;100&#39;),
+ (&#39;spark.master&#39;, &#39;local[*]&#39;),
+ (&#39;spark.executor.id&#39;, &#39;driver&#39;),
+ (&#39;spark.submit.deployMode&#39;, &#39;client&#39;),
+ (&#39;spark.app.name&#39;, &#39;Local Spark Context&#39;),
+ (&#39;spark.ui.showConsoleProgress&#39;, &#39;true&#39;),
+ (&#39;spark.driver.host&#39;, &#39;172.16.180.180&#39;)]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">session</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[4]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+
+            <div>
+                <p><b>SparkSession - in-memory</b></p>
+                
+        <div>
+            <p><b>SparkContext</b></p>
+
+            <p><a href="http://172.16.180.180:4041">Spark UI</a></p>
+
+            <dl>
+              <dt>Version</dt>
+                <dd><code>v2.4.4</code></dd>
+              <dt>Master</dt>
+                <dd><code>local[*]</code></dd>
+              <dt>AppName</dt>
+                <dd><code>Local Spark Context</code></dd>
+            </dl>
+        </div>
+        
+            </div>
+        
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="alert alert-block alert-success">
+<b>Note:</b> I have also uploaded the example above as a separate Notebook, so that you can download it and try it out in your own local environment. (<a href="ConnectingToSparkInJupyter.ipynb">Connecting to Spark in Jupyter</a>)
+</div>
 </div>
 </div>
 </div>
